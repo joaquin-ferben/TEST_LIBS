@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8">iot_engcore_explorador</prop>
+   <prop name="es_ES.utf8">iot_engcore_explorador</prop>
+  </prop>
+  <prop name="Size">1600 952</prop>
+  <prop name="BackColor">iot_fondo</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">96</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;iot/engcore/iot_engcore_explorador&quot;]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[// Explorador de clases (engcore, spec 002.3). El panel solo llama a la librería.
+main()
+{
+  iot_initExplorador();
+}]]></script>
+ </events>
+ <shapes>
+  <shape Name="tree_clases" layerId="0" shapeType="TREE">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 16</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="es_ES.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+    </prop>
+    <prop name="Location">16 16</prop>
+    <prop name="Size">448 920</prop>
+    <extended>
+     <prop name="sortingEnabled" type="BOOL">False</prop>
+     <prop name="rootIsDecorated" type="BOOL">True</prop>
+     <script isEscaped="1" name="selectionChanged"><![CDATA[selectionChanged(string id)
+{
+  iot_onExploradorSeleccion(id);
+}]]></script>
+    </extended>
+   </properties>
+   <events>
+    <script isEscaped="1" name="RightMousePressed"><![CDATA[main(bool onHeader, string id, int column, mapping event)
+{
+  iot_onExploradorMenu(onHeader, id);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="txt_codigo" layerId="0" shapeType="TEXT_EDIT">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">480 16</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="es_ES.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+    </prop>
+    <prop name="Location">480 16</prop>
+    <prop name="Size">1104 872</prop>
+    <extended>
+     <prop name="readOnly" type="BOOL">True</prop>
+    </extended>
+   </properties>
+  </shape>
+  <shape Name="txt_fichero" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">3</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">480 912</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto_sec</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">480 912</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,-1,12,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="es_ES.utf8">Tahoma,-1,12,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="btn_editar" layerId="0" shapeType="PUSH_BUTTON">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1464 904</prop>
+    <prop name="Enable">False</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="es_ES.utf8">Tahoma,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+    </prop>
+    <prop name="Location">1464 904</prop>
+    <prop name="Size">120 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main()
+{
+  iot_onExploradorEditar();
+}]]></script>
+   </events>
+  </shape>
+ </shapes>
+</panel>

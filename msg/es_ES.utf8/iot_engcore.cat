@@ -1,0 +1,98 @@
+00001,Fallo al crear o modificar el DPT de la clase
+00002,Fallo al actualizar el registro de la clase
+00003,Fallo del explorador de clases
+errBloqueSinCerrar,Bloque //@dp: sin cerrar con //@end
+errBloqueAnidado,Bloque //@dp: dentro de otro bloque: cierra el anterior con //@end
+errEndSinAbrir,//@end sin un bloque //@dp: abierto
+errDecoradorFueraDeClase,Decorador fuera de una clase
+errDecoradorDesconocido,Decorador desconocido: $1
+errRutaInvalida,Ruta de //@dp: no válida: $1
+errInicializador,Una propiedad decorada no puede tener inicializador
+errSinProtected,Una propiedad decorada se declara 'protected tipo nombre;'
+errNoDeclaracion,Dentro de un bloque solo se admite 'protected tipo nombre;'
+errTipo,Tipo no admitido en un DPE: $1
+errRutaRepetida,El DPE $1 está repetido (clase $2)
+errNombreRepetido,La propiedad $1 está repetida (clase $2)
+errEstructura,El DPE $1 choca con la estructura de $2 (clase $3)
+errPadre,No se encuentra la clase padre $1 en el fichero ni en sus #uses
+errSinRaiz,La clase $1 tiene decoradores pero no hereda de IotDpObject
+errHerencia,Herencia circular o demasiado profunda en la clase $1
+errRegistro,El registro de la clase $1 no existe o no es válido
+errFichero,No se puede leer el fichero $1
+errAplicar,No se han podido aplicar todos los cambios ($1). Revisa el log.
+menu,IoT
+accionGenerar,Generar DPT desde clase
+tituloErrores,Errores en las clases
+textoErrores,Corrige estos errores. No se ha modificado ningún DPT.
+tituloBorrados,Confirmar borrado de elementos
+textoBorrados,Estos elementos desaparecen de su DPT y los DPs afectados pierden su valor. ¿Continuar?
+dpsAfectados,$1: $2 DPs afectados
+tituloResumen,DPT actualizados
+textoResumen,Se han actualizado el DPT y el registro de estas clases (se procesa el fichero guardado en disco):
+textoSinClases,El fichero no tiene clases que hereden de IotDpObject.
+textoCancelado,No se ha modificado ningún DPT.
+botonSi,Sí
+botonNo,No
+botonAceptar,Aceptar
+errMetodoChoca,El método $1 choca con el accesor que se genera para la propiedad $2: bórralo o renómbralo
+errAccesorReservado,La propiedad $1 genera $2, que ya es un método de IotDpObject: renombra la propiedad
+accionAyuda,Ayuda
+tituloAyuda,Ayuda de IoT
+textoAyuda,Herramienta de clases con DP. Cada clase que hereda de IotDpObject tiene un DPT con sus propiedades decoradas.
+tituloSinGuardar,Fichero sin guardar
+textoSinGuardar,El editor tiene cambios sin guardar. Guarda el fichero y vuelve a generar. No se ha modificado nada.
+textoGuardar,Se ha reescrito el bloque //@generado en el editor: guarda el fichero.
+ayuda01,DECORADORES
+ayuda02,  //@dp:<ruta> abre un bloque y //@end lo cierra. Ruta vacía = raíz del DP; niveles con punto: //@dp:estado.velocidad
+ayuda03,  Dentro de un bloque solo 'protected tipo nombre;' (sin inicializador). Los bloques no se anidan.
+ayuda04,  protected: IotDpObject está en otra librería y solo así ve las propiedades de las hijas.
+ayuda05,  Tipos: bool int uint float string time langString, sus dyn_ y mapping (se guarda como JSON).
+ayuda06,HERENCIA
+ayuda07,  class B : A con #uses de A. El DPT de B lleva lo de A y lo suyo; generar A regenera todas sus descendientes.
+ayuda08,ACCESO AL DP
+ayuda09,  Las propiedades no guardan valores: cada get lee el DP en ese momento y cada set lo escribe al momento.
+ayuda10,  Getters y setters generados en el bloque //@generado: getVelocidad() y setVelocidad(valor). No se editan a mano.
+ayuda11,  Varias a la vez: getVarios(makeDynString("run", "actual"), valores) y setVarios(makeMapping("run", true)).
+ayuda12,  Uso: shared_ptr<IotMotor> m = new IotMotor("motor1"); m.setRun(true);
+ayuda13,PASOS
+ayuda14,  1. Guardar la clase. 2. IoT > Generar DPT desde clase (Ctrl+Shift+G). 3. Guardar otra vez (el bloque //@generado se escribe en el editor).
+exploradorEditar,Editar
+exploradorMenu_crear,Crear clase hija
+exploradorMenu_borrar,Borrar clase
+exploradorMenu_aLibreria,Mover a la librería
+exploradorMenu_aProyecto,Mover al proyecto
+exploradorTituloCrear,Crear clase hija
+exploradorTextoCrear,Nombre de la nueva clase hija de $1:
+exploradorTituloBorrar,Borrar clases
+exploradorTextoBorrar,Se borrará todo esto, de las hijas hacia el padre:
+exploradorBotonContinuar,Continuar
+exploradorBotonCancelar,Cancelar
+exploradorConfirmarBorrado,Se borrarán $1 clases y $2 DPs. ¿Seguro?
+exploradorTituloError,Explorador de clases
+exploradorTextoError,No se ha podido completar la acción:
+exploradorResumenFichero,Fichero: $1
+exploradorResumenDpt,DPT $1 con $2 DPs
+exploradorResumenSinDpt,Sin DPT
+exploradorResumenRegistro,Registro de la clase
+exploradorResumenSinRegistro,Sin registro
+exploradorUbicacionProyecto,Proyecto: $1
+exploradorUbicacionLibreria,Librería: $1
+exploradorUbicacionDuplicada,Duplicada, manda la del proyecto: $1
+exploradorPlantillaBrief,Clase con DP, hija de $1.
+exploradorPlantillaBloque,Propiedades con DP: 'protected tipo nombre;' dentro del bloque. Después, IoT > Generar DPT desde clase.
+errExploradorClaseRepetida,La clase $1 está en dos ficheros: $2 y $3
+errExploradorNombre,"$1" no es un nombre de clase válido: solo letras, dígitos y _, y sin empezar por un dígito
+errExploradorNombreExiste,Ya existe una clase llamada $1
+errExploradorNoEncontrada,No se encuentra la clase $1
+errExploradorDptExiste,Ya existe un DPT llamado $1
+errExploradorFicheroExiste,Ya existe el fichero $1
+errExploradorEscribir,No se ha podido escribir el fichero $1
+errExploradorDestinoOcupado,Ya existe $1: no se ha movido nada
+errExploradorMover,No se ha podido mover el fichero $1
+errExploradorRaiz,$1 no se puede borrar ni mover
+errExploradorALibreria,$1 no puede ir a la librería: su antepasada $2 está en el proyecto
+errExploradorAProyecto,$1 no puede ir al proyecto: su descendiente $2 está en la librería
+errExploradorBorrarDp,No se ha podido borrar el DP $1
+errExploradorBorrarDpt,No se ha podido borrar el DPT $1
+errExploradorBorrarRegistro,No se ha podido borrar el registro de la clase $1
+errExploradorBorrarFichero,No se ha podido borrar el fichero $1

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Clase duplicada: la misma ruta en el proyecto y en la librería; manda la del proyecto (hoja de delante, rellena) -->
+  <rect x="1.5" y="1.5" width="8.5" height="10" fill="none" stroke="#5a5a5a" stroke-width="1"/>
+  <rect x="5.5" y="4.5" width="8.5" height="10" fill="#404040" stroke="#1e1e1e" stroke-width="1"/>
+</svg>

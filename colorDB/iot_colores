@@ -1,0 +1,13 @@
+0 12 0
+"iot_fondo" N {215,215,215}
+"iot_proceso" N {160,160,160}
+"iot_texto" N {30,30,30}
+"iot_texto_sec" N {90,90,90}
+"iot_activo" N {64,64,64}
+"iot_inactivo" N {240,240,240}
+"iot_alm_p1" N {220,0,0}
+"iot_alm_p2" N {255,140,0}
+"iot_alm_p3" N {255,220,0}
+"iot_alm_p4" N {255,240,150}
+"iot_invalido" N {255,0,255}
+"iot_manual" N {0,90,200}

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8">iot_engcore_dialogo</prop>
+   <prop name="es_ES.utf8">iot_engcore_dialogo</prop>
+  </prop>
+  <prop name="Size">640 360</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[#uses &quot;iot/engcore/iot_engcore_comun&quot;]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[// Diálogo de la extensión del Script Editor (engcore). El contenido llega por variables globales del manager.
+main()
+{
+  string texto = getVariable(IOT_ENGCORE_VAR_TEXTO);
+  string lista = getVariable(IOT_ENGCORE_VAR_LISTA);
+  bool confirmar = getVariable(IOT_ENGCORE_VAR_MODO) == IOT_ENGCORE_MODO_CONFIRMAR;
+
+  txt_contenido.textFormat(&quot;PlainText&quot;);
+  setValue(&quot;txt_contenido&quot;, &quot;text&quot;, lista == &quot;&quot; ? texto : texto + &quot;\n\n&quot; + lista);
+  setValue(&quot;btn_si&quot;, &quot;visible&quot;, confirmar, &quot;text&quot;, getCatStr(IOT_ENGCORE_CATALOGO, &quot;botonSi&quot;));
+  setValue(&quot;btn_no&quot;, &quot;visible&quot;, confirmar, &quot;text&quot;, getCatStr(IOT_ENGCORE_CATALOGO, &quot;botonNo&quot;));
+  setValue(&quot;btn_aceptar&quot;, &quot;visible&quot;, !confirmar, &quot;text&quot;, getCatStr(IOT_ENGCORE_CATALOGO, &quot;botonAceptar&quot;));
+}]]></script>
+ </events>
+ <shapes>
+  <shape shapeType="TEXT_EDIT" Name="txt_contenido" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 16</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">16 16</prop>
+    <prop name="Size">608 280</prop>
+    <extended>
+     <prop type="BOOL" name="readOnly">True</prop>
+    </extended>
+   </properties>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_si" layerId="0">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">400 312</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">400 312</prop>
+    <prop name="Size">104 32</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  setVariable(IOT_ENGCORE_VAR_RESPUESTA, IOT_ENGCORE_RESPUESTA_SI);
+  ModuleOff(myModuleName());
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_no" layerId="0">
+   <properties>
+    <prop name="serialId">3</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">520 312</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">520 312</prop>
+    <prop name="Size">104 32</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  setVariable(IOT_ENGCORE_VAR_RESPUESTA, IOT_ENGCORE_RESPUESTA_NO);
+  ModuleOff(myModuleName());
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_aceptar" layerId="0">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">520 312</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">520 312</prop>
+    <prop name="Size">104 32</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  setVariable(IOT_ENGCORE_VAR_RESPUESTA, IOT_ENGCORE_RESPUESTA_SI);
+  ModuleOff(myModuleName());
+}]]></script>
+   </events>
+  </shape>
+ </shapes>
+</panel>

@@ -1,0 +1,25 @@
+# --- Fin de línea: CRLF en código WinCC OA (dev/docs/estilo-ctrl.md, sección 2) ---
+* text=auto
+*.ctl text eol=crlf
+*.pnl text eol=crlf
+*.xml text eol=crlf
+*.cat text eol=crlf
+*.dpl text eol=crlf
+*.lst text eol=crlf
+*.ps1 text eol=crlf
+colorDB/** text eol=crlf
+
+# --- Binarios ---
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.dll binary
+*.exe binary
+*.qch binary
+
+# --- Fuera de los paquetes (git archive) ---
+.gitignore export-ignore
+.gitattributes export-ignore
+scripts/tests/ export-ignore

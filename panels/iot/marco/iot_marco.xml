@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8">iot_marco</prop>
+   <prop name="es_ES.utf8">iot_marco</prop>
+  </prop>
+  <prop name="Size">1920 1080</prop>
+  <prop name="BackColor">iot_fondo</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[#uses &quot;iot/marco/iot_marco&quot;]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  iot_initMarco();
+}]]></script>
+ </events>
+ <shapes>
+  <shape shapeType="RECTANGLE" Name="rect_cabecera" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">0 0</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto_sec</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">0 0</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Size">1920 64</prop>
+    <prop name="CornerRadius">0</prop>
+   </properties>
+  </shape>
+  <shape shapeType="PRIMITIVE_TEXT" Name="txt_planta" layerId="0">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 8</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">16 8</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,16,-1,5,75,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,16,-1,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="TextFormat">[0s,,,ALIGNMENT_BEGINNING]</prop>
+   </properties>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_ruta1" layerId="0">
+   <properties>
+    <prop name="serialId">3</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">16 32</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">16 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Size">160 24</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  iot_onMarcoRuta(1);
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_ruta2" layerId="0">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">184 32</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">184 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Size">160 24</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  iot_onMarcoRuta(2);
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_ruta3" layerId="0">
+   <properties>
+    <prop name="serialId">5</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">352 32</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">352 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Size">160 24</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  iot_onMarcoRuta(3);
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PUSH_BUTTON" Name="btn_ruta4" layerId="0">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">520 32</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">6</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">520 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,9,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Size">160 24</prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main()
+{
+  iot_onMarcoRuta(4);
+}]]></script>
+   </events>
+  </shape>
+  <shape shapeType="PRIMITIVE_TEXT" Name="txt_titulo" layerId="0">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">704 16</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">704 16</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,16,-1,5,75,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,16,-1,5,75,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="TextFormat">[0s,,,ALIGNMENT_BEGINNING]</prop>
+   </properties>
+  </shape>
+  <shape shapeType="PRIMITIVE_TEXT" Name="txt_usuario" layerId="0">
+   <properties>
+    <prop name="serialId">8</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1600 8</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">8</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">1600 8</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="TextFormat">[0s,,,ALIGNMENT_BEGINNING]</prop>
+   </properties>
+  </shape>
+  <shape shapeType="PRIMITIVE_TEXT" Name="txt_fechaHora" layerId="0">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1600 32</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">9</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">1600 32</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="TextFormat">[0s,,,ALIGNMENT_BEGINNING]</prop>
+   </properties>
+  </shape>
+  <shape shapeType="TREE" Name="tree_nav" layerId="0">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">0 64</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">0 64</prop>
+    <prop name="Font">
+     <prop name="en_US.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+     <prop name="es_ES.utf8">Tahoma,11,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Size">320 952</prop>
+    <extended>
+     <prop name="sortingEnabled" type="BOOL">False</prop>
+     <prop name="rootIsDecorated" type="BOOL">True</prop>
+     <script name="selectionChanged" isEscaped="1"><![CDATA[selectionChanged(string id)
+{
+  iot_showMarcoNodo(id);
+}]]></script>
+    </extended>
+   </properties>
+  </shape>
+  <shape shapeType="EMBEDDED_MODULE" Name="mod_trabajo" layerId="0">
+   <properties>
+    <prop name="serialId">11</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">320 64</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">11</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">320 64</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Size">1600 952</prop>
+   </properties>
+  </shape>
+  <shape shapeType="RECTANGLE" Name="rect_alarmas" layerId="0">
+   <properties>
+    <prop name="serialId">12</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">0 1016</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">iot_texto_sec</prop>
+    <prop name="BackColor">iot_fondo</prop>
+    <prop name="TabOrder">12</prop>
+    <prop name="ToolTipText">
+     <prop name="en_US.utf8"></prop>
+     <prop name="es_ES.utf8"></prop>
+    </prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">0 1016</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Size">1920 64</prop>
+    <prop name="CornerRadius">0</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

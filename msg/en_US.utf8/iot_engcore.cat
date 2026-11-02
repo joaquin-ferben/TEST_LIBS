@@ -1,0 +1,98 @@
+00001,Failed to create or change the DPT of the class
+00002,Failed to update the registry of the class
+00003,Class explorer failure
+errBloqueSinCerrar,//@dp: block not closed with //@end
+errBloqueAnidado,//@dp: block inside another block: close the previous one with //@end
+errEndSinAbrir,//@end without an open //@dp: block
+errDecoradorFueraDeClase,Decorator outside a class
+errDecoradorDesconocido,Unknown decorator: $1
+errRutaInvalida,Invalid //@dp: path: $1
+errInicializador,A decorated property cannot have an initializer
+errSinProtected,A decorated property is declared 'protected type name;'
+errNoDeclaracion,Inside a block only 'protected type name;' is allowed
+errTipo,Type not supported in a DPE: $1
+errRutaRepetida,DPE $1 is repeated (class $2)
+errNombreRepetido,Property $1 is repeated (class $2)
+errEstructura,DPE $1 clashes with the structure of $2 (class $3)
+errPadre,Parent class $1 not found in the file or its #uses
+errSinRaiz,Class $1 has decorators but does not inherit from IotDpObject
+errHerencia,Circular or too deep inheritance in class $1
+errRegistro,The registry of class $1 does not exist or is not valid
+errFichero,Cannot read file $1
+errAplicar,Not all changes could be applied ($1). Check the log.
+menu,IoT
+accionGenerar,Generate DPT from class
+tituloErrores,Errors in the classes
+textoErrores,Fix these errors. No DPT has been changed.
+tituloBorrados,Confirm element deletion
+textoBorrados,These elements are removed from their DPT and the affected DPs lose their value. Continue?
+dpsAfectados,$1: $2 DPs affected
+tituloResumen,DPTs updated
+textoResumen,The DPT and registry of these classes have been updated (the file saved on disk is processed):
+textoSinClases,The file has no classes inheriting from IotDpObject.
+textoCancelado,No DPT has been changed.
+botonSi,Yes
+botonNo,No
+botonAceptar,OK
+errMetodoChoca,Method $1 clashes with the accessor generated for property $2: delete or rename it
+errAccesorReservado,Property $1 generates $2, which is already a method of IotDpObject: rename the property
+accionAyuda,Help
+tituloAyuda,IoT help
+textoAyuda,Tool for classes with a DP. Every class inheriting from IotDpObject has a DPT with its decorated properties.
+tituloSinGuardar,Unsaved file
+textoSinGuardar,The editor has unsaved changes. Save the file and generate again. Nothing has been changed.
+textoGuardar,The //@generado block has been rewritten in the editor: save the file.
+ayuda01,DECORATORS
+ayuda02,  //@dp:<path> opens a block and //@end closes it. Empty path = DP root; levels with dots: //@dp:estado.velocidad
+ayuda03,  Inside a block only 'protected type name;' (no initializer). Blocks are not nested.
+ayuda04,  protected: IotDpObject is in another library and can only see the child properties this way.
+ayuda05,  Types: bool int uint float string time langString, their dyn_ and mapping (stored as JSON).
+ayuda06,INHERITANCE
+ayuda07,  class B : A with #uses of A. The DPT of B has what A has plus its own; generating A regenerates all its descendants.
+ayuda08,DP ACCESS
+ayuda09,  Properties hold no values: every get reads the DP at that moment and every set writes it immediately.
+ayuda10,  Getters and setters generated in the //@generado block: getVelocidad() and setVelocidad(value). Do not edit them by hand.
+ayuda11,  Several at once: getVarios(makeDynString("run", "actual"), values) and setVarios(makeMapping("run", true)).
+ayuda12,  Usage: shared_ptr<IotMotor> m = new IotMotor("motor1"); m.setRun(true);
+ayuda13,STEPS
+ayuda14,  1. Save the class. 2. IoT > Generate DPT from class (Ctrl+Shift+G). 3. Save again (the //@generado block is written in the editor).
+exploradorEditar,Edit
+exploradorMenu_crear,Create child class
+exploradorMenu_borrar,Delete class
+exploradorMenu_aLibreria,Move to library
+exploradorMenu_aProyecto,Move to project
+exploradorTituloCrear,Create child class
+exploradorTextoCrear,Name of the new child class of $1:
+exploradorTituloBorrar,Delete classes
+exploradorTextoBorrar,All of this will be deleted, from the children up to the parent:
+exploradorBotonContinuar,Continue
+exploradorBotonCancelar,Cancel
+exploradorConfirmarBorrado,$1 classes and $2 DPs will be deleted. Are you sure?
+exploradorTituloError,Class explorer
+exploradorTextoError,The action could not be completed:
+exploradorResumenFichero,File: $1
+exploradorResumenDpt,DPT $1 with $2 DPs
+exploradorResumenSinDpt,No DPT
+exploradorResumenRegistro,Class registry
+exploradorResumenSinRegistro,No registry
+exploradorUbicacionProyecto,Project: $1
+exploradorUbicacionLibreria,Library: $1
+exploradorUbicacionDuplicada,Duplicated, the project one wins: $1
+exploradorPlantillaBrief,Class with DP, child of $1.
+exploradorPlantillaBloque,DP properties: 'protected type name;' inside the block. Then, IoT > Generar DPT desde clase.
+errExploradorClaseRepetida,Class $1 is in two files: $2 and $3
+errExploradorNombre,"$1" is not a valid class name: only letters, digits and _, not starting with a digit
+errExploradorNombreExiste,A class named $1 already exists
+errExploradorNoEncontrada,Class $1 not found
+errExploradorDptExiste,A DPT named $1 already exists
+errExploradorFicheroExiste,File $1 already exists
+errExploradorEscribir,File $1 could not be written
+errExploradorDestinoOcupado,$1 already exists: nothing has been moved
+errExploradorMover,File $1 could not be moved
+errExploradorRaiz,$1 cannot be deleted or moved
+errExploradorALibreria,$1 cannot go to the library: its ancestor $2 is in the project
+errExploradorAProyecto,$1 cannot go to the project: its descendant $2 is in the library
+errExploradorBorrarDp,DP $1 could not be deleted
+errExploradorBorrarDpt,DPT $1 could not be deleted
+errExploradorBorrarRegistro,The registry of class $1 could not be deleted
+errExploradorBorrarFichero,File $1 could not be deleted

@@ -1,0 +1,55 @@
+# --- Runtime WinCC OA ---
+db/
+log/
+cache/
+*.log
+*.dmp
+
+# Cuidado: bin/ puede contener CtrlExtensions (DLL) propias del proyecto.
+# Si las tenéis, mejor ignorar solo lo generado y versionar las DLL.
+bin/
+
+# --- Backups y temporales (GEDI, editores, merges) ---
+*.bak
+*.orig
+*.tmp
+*~
+
+# --- Seguridad: certificados y claves ---
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.der
+*.crl
+
+# --- Config dependiente de máquina ---
+# config/config SÍ se versiona, aunque lleva rutas absolutas (pvss_path, proj_path)
+# y el hostname en [ui] httpServer. Al clonar en otra máquina hay que ajustarlos.
+# Si se pasa a ignorarlo, descomentar la línea siguiente.
+# config/config
+
+# --- Compilación API (CtrlExtensions, managers propios) ---
+*.obj
+*.o
+*.pdb
+*.ilk
+build/
+
+# --- Python (generadores, tooling CSV) ---
+__pycache__/
+*.pyc
+.venv/
+
+# --- Node (webserver.js, JavaScript managers) ---
+node_modules/
+
+# --- Claude Code y editor: solo lo personal ---
+.claude/settings.local.json
+*.code-workspace
+
+# --- Sistema operativo ---
+Thumbs.db
+desktop.ini
+.DS_Store

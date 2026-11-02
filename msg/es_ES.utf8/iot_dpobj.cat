@@ -1,0 +1,5 @@
+00001,La clase no tiene registro de DP o el registro no es válido
+00002,El DP no existe o ha fallado la lectura o escritura
+00003,Nombre de DP de registro no válido
+00004,No se puede crear el DPT de registro
+00005,La propiedad no existe en el registro de la clase

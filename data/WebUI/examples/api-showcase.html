@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WinCC OA RXJSAPI Tester</title>
+    <style>
+      body {
+        background-color: transparent;
+        color: grey;
+      }
+      .result,
+      .param,
+      .description {
+        transition: all 1s;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: "Courier New";
+      }
+      .result,
+      .param {
+        font-size: 10px;
+      }
+      .result.change {
+        background-color: lightblue;
+      }
+      .highlight {
+        font-weight: bold;
+        color: #58c540;
+      }
+    </style>
+  </head>
+  <body class="uxt uxt-defaults">
+    <div id="initError" style="color: red; margin-top: 10px; display: none">
+      Initialization error. Ensure the OA RxJS service is attached.
+    </div>
+
+    <div class="inputGroup" id="reloadForm" style="display: none">
+      <label class="inputGroup__label" for="dpName"> Data Point Name: </label>
+      <input
+        class="inputGroup__textInput"
+        type="text"
+        placeholder="Enter datapoint name"
+        value="ExampleDP_Arg1."
+        id="dpName"
+      />
+      <div class="inputGroup__description">
+        Use this Data Point as parameter for the commands below.
+      </div>
+
+      <button class="button button--primary" onclick="disconnectAndReload()">
+        Reload Commands
+      </button>
+    </div>
+    <table id="resultTable" class="table">
+      <thead>
+        <tr class="table-header">
+          <th>Command</th>
+          <th>Parameters</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows for results will be dynamically added here -->
+      </tbody>
+    </table>
+
+    <script type="module">
+      export function disconnect() {
+        // Unsubscribe from previous subscriptions
+        subscriptions.forEach((subscription) => subscription.unsubscribe());
+        subscriptions = [];
+
+        // Clear existing result rows
+        const resultTable = document
+          .getElementById("resultTable")
+          .getElementsByTagName("tbody")[0];
+        while (resultTable.firstChild) {
+          resultTable.removeChild(resultTable.firstChild);
+        }
+      }
+      window.disconnect = disconnect;
+
+      window.addEventListener("beforeunload", disconnect);
+
+      export function disconnectAndReload() {
+        disconnect();
+
+        // Reload commands
+        executeCommands();
+      }
+      window.disconnectAndReload = disconnectAndReload;
+
+      // import module responsible for retrieving the oaRxJS API from the parent window
+      import { OaRxJsRetriever } from "/data/WebUI/loader/oa-rx-js-api-loader.js";
+
+      // create an instance of imported module to use
+      const oaRxJsRetriever = new OaRxJsRetriever();
+      let oaRxJsApi;
+      let subscriptions = [];
+
+      // try to retrieve the API from the parent, so it is possible to request information from it
+      try {
+        oaRxJsApi = await oaRxJsRetriever.retrieveApi();
+
+        // in case the instance is destroyed disconnect all the connections to avoid unnecessary calls to the API
+        oaRxJsRetriever.destroy.then(() => {
+          disconnect();
+        });
+
+        document.getElementById("reloadForm").style.display = "inline-block";
+        executeCommands();
+      } catch (error) {
+        // display error in case of failure
+        document.getElementById("initError").style.display = "inline-block";
+        console.error("Initialization failed:", error.message);
+      }
+
+      function executeCommands() {
+        const dpName = document.getElementById("dpName").value;
+        executeCommand(
+          "dpConnect",
+          "Connect to a Data Point by subscribing to its changes. \nReturns the current value.",
+          { dpName: dpName }
+        );
+        executeCommand(
+          "dpNames",
+          "Get Data Point Names matching a pattern. \nReturns an array of Data Point names.",
+          { dpPattern: "Example*", dpType: null }
+        );
+        executeCommand(
+          "dpGetFormat",
+          "Get Data Point Format by providing a Data Point name. \nReturns an object describing the Data Point format.",
+          { dpName: dpName }
+        );
+        executeCommand(
+          "dpQuery",
+          "Query Data Points based on a SQL-like query. \nReturns an array of results.",
+          {
+            query:
+              "SELECT '_original.._value' FROM 'ExampleDP_Arg*' WHERE _DPT= \"ExampleDP_Float\"",
+          }
+        );
+        executeCommand(
+          "customCommand",
+          "Execute a custom command with specified parameters. \nReturns the result of the command execution.",
+          { command: "etm.model.type.get", params: { name: "_Event" } }
+        );
+        executeCommand(
+          "dpGet",
+          "Get the current value of a Data Point. \nReturns the current value of the Data Point.",
+          { dpName: dpName }
+        );
+        executeCommand(
+          "dpGetDescription",
+          "Get Data Point Description by providing a Data Point name and mode. \nReturns a description object for the Data Point.",
+          { dpName: dpName, mode: 3 }
+        );
+        // executeCommand('dpSet', 'Set the value of a Data Point by providing the Data Point name and the new value. \nReturns true if the set was successful.', { dpName: dpName, value: '1234' });
+        executeCommand(
+          "connectToHeartbeat",
+          "Connect to Heartbeat by subscribing to heartbeat events. \nReturns the heartbeat events.",
+          {}
+        );
+      }
+
+      function executeCommand(command, description, params) {
+        const resultTable = document
+          .getElementById("resultTable")
+          .getElementsByTagName("tbody")[0];
+        const newRow = resultTable.insertRow(-1);
+
+        const commandCell = newRow.insertCell(0);
+        commandCell.innerHTML = `<span class="highlight">${command}</span><div class="description">${description}</div>`;
+
+        const paramCell = newRow.insertCell(1);
+        paramCell.textContent = JSON.stringify(params);
+        paramCell.className = "param";
+
+        const resultCell = newRow.insertCell(2);
+        resultCell.className = "result";
+
+        subscriptions.push(
+          oaRxJsApi[command](...Object.values(params)).subscribe(
+            (result) => {
+              resultCell.textContent = JSON.stringify(result, null, 2);
+              resultCell.classList.add("change");
+              setTimeout(function () {
+                resultCell.classList.remove("change");
+              }, 200);
+            },
+            (error) => {
+              resultCell.textContent = `Error: ${error.message}`;
+            }
+          )
+        );
+      }
+    </script>
+  </body>
+</html>

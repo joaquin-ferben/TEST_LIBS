@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Widget</title>
+    <style>
+      body {
+        background-color: transparent;
+        color: grey;
+      }
+    </style>
+  </head>
+
+  <body class="uxt uxt-defaults">
+    <div id="container">
+      <div id="initError" style="color: red; margin-top: 10px; display: none">
+        Initialization error. Ensure the OA RxJS service is attached.
+      </div>
+      <p id="dp">...</p>
+      <p id="value">...</p>
+    </div>
+
+    <script type="module">
+      export function disconnect() {
+        // Unsubscribe from previous subscriptions
+        subscriptions.forEach((subscription) => subscription.unsubscribe());
+        subscriptions = [];
+
+        // Clear existing result rows
+        const resultTable = document
+          .getElementById("resultTable")
+          .getElementsByTagName("tbody")[0];
+        while (resultTable.firstChild) {
+          resultTable.removeChild(resultTable.firstChild);
+        }
+      }
+      window.disconnect = disconnect;
+
+      // import module responsible for retrieving the oaRxJS API from the parent window
+      import { OaRxJsRetriever } from "/data/WebUI/loader/oa-rx-js-api-loader.js";
+
+      // create an instance of imported module to use
+      const oaRxJsRetriever = new OaRxJsRetriever();
+      let oaRxJsApi;
+      let subscriptions = [];
+
+      // try to retrieve the API from the parent, so it is possible to request information from it
+      try {
+        oaRxJsApi = await oaRxJsRetriever.retrieveApi();
+
+        // in case the instance is destroyed disconnect all the connections to avoid unnecessary calls to the API
+        oaRxJsRetriever.destroy.then(() => {
+          disconnect();
+        });
+      } catch (error) {
+        // display error in case of failure
+        document.getElementById("initError").style.display = "inline-block";
+        console.error("Initialization failed:", error.message);
+      }
+
+      // Here we set up a dpConnect
+      // The .subscribe() function represents the callback function that is called with each new value
+      oaRxJsApi.dpConnect("ExampleDP_Arg1.").subscribe((data) => {
+        // If a value is present (i.e., the data point exists)
+        if (data.value && data.value.length >= 1) {
+          // Then the current value and the name are written to the labels
+          value.innerHTML = data.value[0];
+          dp.innerHTML = data.dp[0];
+        }
+      });
+    </script>
+  </body>
+</html>

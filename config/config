@@ -1,0 +1,13 @@
+[general]
+pvss_path = "C:/Program Files/Siemens/WinCC_OA/3.21"
+proj_path = "C:/WinCC_OA_Proj_21/TEST_LIBS"
+proj_version = "3.21"
+useNGA = 1
+useSQLite = 1
+langs = "es_ES.utf8"
+[ui]
+defaultFont = "Noto Sans"
+httpServer = "https://DESKTOP-PG0Q1OP:443"
+[webClient]
+httpsPort = 443
+httpPort = 0

@@ -1,0 +1,5 @@
+00001,The class has no DP registry or the registry is not valid
+00002,The DP does not exist or reading or writing failed
+00003,Invalid registry DP name
+00004,The registry DPT cannot be created
+00005,The property does not exist in the registry of the class
